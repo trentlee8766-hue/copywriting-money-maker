@@ -1,0 +1,7 @@
+# 排除的文件
+.DS_Store
+Thumbs.db
+*.tmp
+*~
+__pycache__/
+*.pyc
