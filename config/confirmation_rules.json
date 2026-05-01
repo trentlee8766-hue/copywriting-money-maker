@@ -1,0 +1,43 @@
+{
+  "confirmation_rules": {
+    "MANDATORY": {
+      "description": "必须用户确认后才能继续的节点",
+      "steps": [
+        "需求理解确认（Phase 1 报告）",
+        "资料核对清单确认（Phase 2）",
+        "执行方案确认（Phase 3）",
+        "大纲确认（写作任务）",
+        "第一章内容确认（写作任务，立标杆）",
+        "最终交付确认（Phase 4）"
+      ]
+    },
+    "AUTOMATIC": {
+      "description": "自动执行、无需确认的步骤",
+      "steps": [
+        "文档结构快照",
+        "AI率预判扫描",
+        "文献格式检查"
+      ]
+    },
+    "CONDITIONAL": {
+      "description": "根据条件判断是否需要确认",
+      "rules": [
+        {
+          "step": "章节内容确认",
+          "condition": "新写作任务时每章都确认；修改任务时只确认改动大的章节",
+          "default": "auto"
+        },
+        {
+          "step": "降AI每轮结果",
+          "condition": "每轮降AI后建议用户测AI率，根据反馈决定是否继续",
+          "default": "confirm"
+        }
+      ]
+    }
+  },
+  "user_modes": {
+    "beginner": "所有 MANDATORY + CONDITIONAL 步骤都确认，附带详细解释",
+    "standard": "MANDATORY + 首次 CONDITIONAL 步骤确认",
+    "expert": "仅 MANDATORY 步骤确认"
+  }
+}
